@@ -1,9 +1,10 @@
 var express = require('express');
 var mongoose= require('mongoose');
 var Trade= require('../models/trade');
+var config = require('../config');
 
 
-var url='mongodb://localhost:27017/metallica';
+var url=config.mongoose.uri;
 mongoose.connect(url);
 
 var db = mongoose.connection;
@@ -12,7 +13,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 module.exports = app => {
   app.get('/api/trades', (req, res) => {
-    res.send('Thanks for tradings!');
+    res.send({ express: 'Hello From Express' });
   });
   
   /* GET all trades */

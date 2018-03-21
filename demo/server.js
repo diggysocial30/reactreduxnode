@@ -9,6 +9,9 @@ var Trade= require('./models/trade');
 
 var trade = require('./routes/trade');
 
+var authorization= require('./routes/authorization');
+
+var auth = require('./routes/auth');
 
 
 //and create our instances
@@ -19,14 +22,13 @@ var router = express.Router();
 var port = process.env.API_PORT || 3001;
 
 require('./routes/trade')(app);
+require('./routes/authorization')(app);
 
 
 
 //now we should configure the API to use bodyParser and look for JSON data in the request body
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-app.use('/trades', trade);
 
 //To prevent errors from Cross Origin Resource Sharing, we will set our headers to allow CORS with middleware like so:
 app.use(function(req, res, next) {
