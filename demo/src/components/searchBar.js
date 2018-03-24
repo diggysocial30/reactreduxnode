@@ -1,4 +1,5 @@
 import React,{ Component }  from 'react' ;
+import { Button, Icon, Grid } from 'semantic-ui-react';
 
 class SearchBar extends Component{
 	
@@ -10,10 +11,12 @@ class SearchBar extends Component{
 	render () {
 		return(
 		<div>
-		<input 
+		<input placeholder="Search here	"
 		value={this.state.term} 
 		onChange={event=> this.setState({term :event.target.value})}/>
+		<Button basic circular icon="video" floated="right" style={{marginTop: 5}} >Click me</Button>
 		</div>
+		
 		)
 	}
 	
